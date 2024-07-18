@@ -1,11 +1,16 @@
-﻿internal class Program
+﻿// Program.cs
+using System;
+using System.Collections.Generic;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
-        //card welcome
+        // Welcome
         string welcome = "Welcome to Comex";
         List<Produto> produtos = new List<Produto>();
-        //card meu
+
+        // Display Logo
         void ExibirLogo()
         {
             Console.WriteLine(@"
@@ -18,45 +23,7 @@
             Console.WriteLine(welcome);
         }
 
-        void CriarProduto()
-        {
-            Console.Clear();
-            Console.WriteLine("----Registro de produto----");
-            Console.Write("Digite o nome do produto: ");
-            string newProduto = Console.ReadLine()!;
-            Produto produto = new Produto(newProduto);
-            produtos.Add(produto);
-            Console.WriteLine($"\nProduto {produto.Nome} adicionado com sucesso");
-            Console.WriteLine("Aperter enter para voltar ao menu principal");
-            Console.ReadKey();
-            Console.Clear();
-            ExibirOpcoesMenu();
-
-
-        }
-
-        void ListaProduto()
-        {
-            Console.Clear();
-            Console.WriteLine("----Lista de Produtos----\n");
-            if (produtos.Count > 0)
-            {
-                foreach (Produto produto in produtos)
-                {
-                    Console.WriteLine($"Produto: {produto.Nome}");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Nenhum produto registrado.");
-            }
-            Console.WriteLine("\nAperte enter para voltar ao menu principal");
-            Console.ReadKey();
-            Console.Clear();
-            ExibirOpcoesMenu();
-
-        }
-
+        // Display Menu Options
         void ExibirOpcoesMenu()
         {
             ExibirLogo();
@@ -68,21 +35,23 @@
             switch (opcaoEscolhida)
             {
                 case 1:
-                    //criar produto
-                    CriarProduto();
+                    // Create product
+                    Produto.CriarProduto(produtos);
                     break;
                 case 2:
-                    //listar produto
-                    ListaProduto();
+                    // List products
+                    Produto.ListaProduto(produtos);
                     break;
                 case 0:
-                    //sair
+                    // Exit
                     Console.WriteLine("Obrigado(a) pela preferência, volte sempre.");
-                    break;
+                    return;
                 default:
-                    Console.WriteLine("Opção inválida"); Console.WriteLine("Opcão inválida");
+                    Console.WriteLine("Opção inválida");
                     break;
             }
+            Console.Clear();
+            ExibirOpcoesMenu();
         }
 
         ExibirOpcoesMenu();
