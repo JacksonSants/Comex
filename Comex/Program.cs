@@ -1,80 +1,90 @@
-﻿//card welcome
-string welcome = "Welcome to Comex";
-List<string> listaProduto = new List<string>();
-//card meu
-void ExibirLogo()
+﻿internal class Program
 {
-    Console.WriteLine(@"
-░█████╗░░█████╗░███╗░░░███╗███████╗██╗░░██╗
-██╔══██╗██╔══██╗████╗░████║██╔════╝╚██╗██╔╝
-██║░░╚═╝██║░░██║██╔████╔██║█████╗░░░╚███╔╝░
-██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░░██╔██╗░
-╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗██╔╝╚██╗
-░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝╚═╝░░╚═╝");
-    Console.WriteLine(welcome);
-}
-
-void CriarProduto()
-{
-    Console.Clear();
-    Console.WriteLine("----Registro de produto----");
-    Console.Write("Digite o nome do produto: ");
-    string produto = Console.ReadLine()!;
-    listaProduto.Add(produto);
-    Console.WriteLine($"Produto {produto} adicionado com sucesso");
-    Console.ReadKey();
-    Console.Clear();
-    ExibirOpcoesMenu();
-
-
-}
-
-void ListaProduto()
-{
-    Console.Clear();
-    Console.WriteLine("----Lista de Produtos----");
-    if (listaProduto.Count == 0)
+    private static void Main(string[] args)
     {
-        Console.WriteLine("Nenhum produto registrado.");
-    }
-    else
-    {
-        foreach (var produto in listaProduto)
+        //card welcome
+        string welcome = "Welcome to Comex";
+        List<Produto> produtos = new List<Produto>();
+        //card meu
+        void ExibirLogo()
         {
-            Console.WriteLine(produto);
+            Console.WriteLine(@"
+        ░█████╗░░█████╗░███╗░░░███╗███████╗██╗░░██╗
+        ██╔══██╗██╔══██╗████╗░████║██╔════╝╚██╗██╔╝
+        ██║░░╚═╝██║░░██║██╔████╔██║█████╗░░░╚███╔╝░
+        ██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░░██╔██╗░
+        ╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗██╔╝╚██╗
+          ░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝╚═╝░░╚═╝");
+            Console.WriteLine(welcome);
         }
+
+        void CriarProduto()
+        {
+            Console.Clear();
+            Console.WriteLine("----Registro de produto----");
+            Console.Write("Digite o nome do produto: ");
+            string newProduto = Console.ReadLine()!;
+            Produto produto = new Produto(newProduto);
+            produtos.Add(produto);
+            Console.WriteLine($"\nProduto {produto.Nome} adicionado com sucesso");
+            Console.WriteLine("Aperter enter para voltar ao menu principal");
+            Console.ReadKey();
+            Console.Clear();
+            ExibirOpcoesMenu();
+
+
+        }
+
+        void ListaProduto()
+        {
+            Console.Clear();
+            Console.WriteLine("----Lista de Produtos----\n");
+            if (produtos.Count > 0)
+            {
+                foreach (Produto produto in produtos)
+                {
+                    Console.WriteLine($"Produto: {produto.Nome}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nenhum produto registrado.");
+            }
+            Console.WriteLine("\nAperte enter para voltar ao menu principal");
+            Console.ReadKey();
+            Console.Clear();
+            ExibirOpcoesMenu();
+
+        }
+
+        void ExibirOpcoesMenu()
+        {
+            ExibirLogo();
+            Console.WriteLine("\n1 - Criar produto\n2 - Listar produto\n0 - Sair");
+            Console.Write("Opção: ");
+            string opcao = Console.ReadLine()!;
+            int opcaoEscolhida = int.Parse(opcao);
+
+            switch (opcaoEscolhida)
+            {
+                case 1:
+                    //criar produto
+                    CriarProduto();
+                    break;
+                case 2:
+                    //listar produto
+                    ListaProduto();
+                    break;
+                case 0:
+                    //sair
+                    Console.WriteLine("Obrigado(a) pela preferência, volte sempre.");
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida"); Console.WriteLine("Opcão inválida");
+                    break;
+            }
+        }
+
+        ExibirOpcoesMenu();
     }
-    Console.ReadKey();
-    Console.Clear();
-    ExibirOpcoesMenu();
-
 }
-
-void ExibirOpcoesMenu()
-{
-    ExibirLogo();
-    Console.WriteLine("\n1 - Criar produto\n2 - Listar produto\n0 - Sair");
-    Console.Write("Opção: ");
-    string opcao = Console.ReadLine()!;
-    int opcaoEscolhida = int.Parse(opcao);
-
-    switch (opcaoEscolhida)
-    {
-        case 1:
-            //criar produto
-            CriarProduto();
-            break;
-        case 2:
-            //listar produto
-            ListaProduto();
-            break;
-        case 0:
-            //sair
-            break;
-        default:
-            Console.WriteLine("Opção inválida"); Console.WriteLine("Opcão inválida");
-            break;
-    }
-}
-
-ExibirOpcoesMenu();
