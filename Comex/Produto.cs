@@ -1,17 +1,15 @@
 ﻿class Produto
 {
-    public Produto(string nome)
+    public Produto(string nome, string descricao, float precoUnitario, int quantidade)
     {
         Nome = nome;
+        Descricao = descricao;
+        PrecoUnitario = precoUnitario;
+        Quantidade = quantidade;
     }
 
     public string Nome { get; }
-    public string Descricao { get; set; }
-    public float PrecoUnitario { get; set; }
-    public int Quantidade { get; set; }
-
-    public void ExibirProduto()
-    {
-        Console.WriteLine($"\nPruduto: {Nome}");
-    }
+    public string Descricao { get; }
+    public float PrecoUnitario { get; }
+    public int Quantidade { get;  }
 }

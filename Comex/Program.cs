@@ -1,10 +1,14 @@
-﻿internal class Program
+﻿using System.Security.Cryptography;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
-        //card welcome
+        //Welcome
         string welcome = "Welcome to Comex";
         List<Produto> produtos = new List<Produto>();
+
+
         //card meu
         void ExibirLogo()
         {
@@ -18,14 +22,29 @@
             Console.WriteLine(welcome);
         }
 
+
+        //Criar/Registrar produto
         void CriarProduto()
         {
             Console.Clear();
             Console.WriteLine("----Registro de produto----");
             Console.Write("Digite o nome do produto: ");
-            string newProduto = Console.ReadLine()!;
-            Produto produto = new Produto(newProduto);
+            string nomeProduto = Console.ReadLine()!;
+
+            Console.Write("Descrição do produto: ");
+            string descricao = Console.ReadLine();
+
+            Console.Write("Preço: ");
+            float precoUnitario = float.Parse(Console.ReadLine());
+
+            Console.Write("Quantidade: ");
+            int quantidade = int.Parse(Console.ReadLine());
+
+
+            Produto produto = new Produto(nomeProduto, descricao, precoUnitario, quantidade);
             produtos.Add(produto);
+
+
             Console.WriteLine($"\nProduto {produto.Nome} adicionado com sucesso");
             Console.WriteLine("Aperter enter para voltar ao menu principal");
             Console.ReadKey();
@@ -35,15 +54,21 @@
 
         }
 
+        //Listar produtos
         void ListaProduto()
         {
             Console.Clear();
             Console.WriteLine("----Lista de Produtos----\n");
             if (produtos.Count > 0)
             {
+                int count = 1;
                 foreach (Produto produto in produtos)
                 {
-                    Console.WriteLine($"Produto: {produto.Nome}");
+                    Console.WriteLine($"Produto_{count}: {produto.Nome}");
+                    Console.WriteLine($"Descrição: {produto.Descricao}");
+                    Console.WriteLine($"Preço Unitário: {produto.PrecoUnitario}");
+                    Console.WriteLine($"Quantidade: {produto.Quantidade}\n");
+                    count += 1;
                 }
             }
             else
@@ -57,6 +82,7 @@
 
         }
 
+        //Menu
         void ExibirOpcoesMenu()
         {
             ExibirLogo();
