@@ -1,16 +1,11 @@
-﻿// Program.cs
-using System;
-using System.Collections.Generic;
-
-internal class Program
+﻿internal class Program
 {
     private static void Main(string[] args)
     {
-        // Welcome
+        //card welcome
         string welcome = "Welcome to Comex";
         List<Produto> produtos = new List<Produto>();
-
-        // Display Logo
+        //card meu
         void ExibirLogo()
         {
             Console.WriteLine(@"
@@ -23,7 +18,45 @@ internal class Program
             Console.WriteLine(welcome);
         }
 
-        // Display Menu Options
+        void CriarProduto()
+        {
+            Console.Clear();
+            Console.WriteLine("----Registro de produto----");
+            Console.Write("Digite o nome do produto: ");
+            string newProduto = Console.ReadLine()!;
+            Produto produto = new Produto(newProduto);
+            produtos.Add(produto);
+            Console.WriteLine($"\nProduto {produto.Nome} adicionado com sucesso");
+            Console.WriteLine("Aperter enter para voltar ao menu principal");
+            Console.ReadKey();
+            Console.Clear();
+            ExibirOpcoesMenu();
+
+
+        }
+
+        void ListaProduto()
+        {
+            Console.Clear();
+            Console.WriteLine("----Lista de Produtos----\n");
+            if (produtos.Count > 0)
+            {
+                foreach (Produto produto in produtos)
+                {
+                    Console.WriteLine($"Produto: {produto.Nome}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nenhum produto registrado.");
+            }
+            Console.WriteLine("\nAperte enter para voltar ao menu principal");
+            Console.ReadKey();
+            Console.Clear();
+            ExibirOpcoesMenu();
+
+        }
+
         void ExibirOpcoesMenu()
         {
             ExibirLogo();
