@@ -17,4 +17,5 @@ internal class Produto
     public string Descricao { get; }
     public float PrecoUnitario { get; }
     public int Quantidade { get; }
+
 }

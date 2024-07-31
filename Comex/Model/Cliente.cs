@@ -1,4 +1,6 @@
-﻿internal class Cliente
+﻿using Comex.Model;
+
+internal class Cliente : IIdentificar
 {
     public string Nome { get; set; }
     public string Cpf { get; set; }
@@ -15,5 +17,9 @@
         Profissao = prodissao;
         Telefone = telefone;
         Endereco = endereco;
+    }
+    public string Identificar()
+    {
+        return $"Nome: {Nome}\nISBN: {Cpf}";
     }
 }
