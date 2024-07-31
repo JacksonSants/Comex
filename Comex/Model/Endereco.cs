@@ -1,4 +1,4 @@
-﻿class Endereco
+﻿internal class Endereco
 {
     public string Bairro { get; set; }
     public string Cidade { get; set; }
