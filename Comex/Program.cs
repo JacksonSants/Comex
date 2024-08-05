@@ -14,22 +14,23 @@ async Task ExibirOpcoesMenu()
     switch (opcaoEscolhida)
     {
         case 1:
-            // Criar produto
+            // Create product
             MenuCriarProduto menu1 = new MenuCriarProduto();
             menu1.Executar(produtos);
+            ExibirOpcoesMenu();
             break;
         case 2:
-            // Listar produtos
+            // List products
             MenuListarProduto menu2 = new MenuListarProduto();
             menu2.Executar(produtos);
             break;
         case 3:
-            // Consultar API de produtos
+            // List products
             MenuProdutosAPI menu3 = new MenuProdutosAPI();
             await menu3.Executar(produtos);
             break;
         case 0:
-            // Sair
+            // Exit
             Console.WriteLine("Obrigado(a) pela preferência, volte sempre.");
             return;
         default:
@@ -40,5 +41,4 @@ async Task ExibirOpcoesMenu()
     await ExibirOpcoesMenu();
 }
 
-// Iniciar o menu principal
 await ExibirOpcoesMenu();
