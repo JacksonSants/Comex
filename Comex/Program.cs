@@ -1,11 +1,17 @@
 ﻿//card welcome
 using Comex.Menu;
-using System.Globalization;
+using Comex.Model;
+using Comex.Order;
 
-List<Produto> produtos = new List<Produto>();
-//card meu
+List<Produto> produtos = new List<Produto> {
+    new Produto("Nootbook Acer", "Nootbook Acer Expire E5000", 1570.00f, 20),
+    new Produto("Nootbook DEL", "Nootbook DEL Expire Ae500", 1760.00f, 15),
+    new Produto("Iphone", "Nootbook DEL Expire Ae500", 1760.00f, 15)
+};
+
 async Task ExibirOpcoesMenu()
 {
+    Menu.ExibirLogo();
     Console.WriteLine("\n1 - Criar produto\n2 - Listar produto\n3 - Consultar API de produtos\n0 - Sair");
     Console.Write("Opção: ");
     string opcao = Console.ReadLine()!;
@@ -15,19 +21,21 @@ async Task ExibirOpcoesMenu()
     {
         case 1:
             // Create product
-            MenuCriarProduto menu1 = new MenuCriarProduto();
+            var menu1 = new MenuCriarProduto();
             menu1.Executar(produtos);
-            ExibirOpcoesMenu();
+            await ExibirOpcoesMenu();
             break;
         case 2:
             // List products
             MenuListarProduto menu2 = new MenuListarProduto();
             menu2.Executar(produtos);
+            await ExibirOpcoesMenu();
             break;
         case 3:
-            // List products
+            // Consultar API de produtos
             MenuProdutosAPI menu3 = new MenuProdutosAPI();
             await menu3.Executar(produtos);
+            await ExibirOpcoesMenu();
             break;
         case 0:
             // Exit
@@ -35,10 +43,10 @@ async Task ExibirOpcoesMenu()
             return;
         default:
             Console.WriteLine("Opção inválida");
+            await ExibirOpcoesMenu();
             break;
     }
     Console.Clear();
-    await ExibirOpcoesMenu();
 }
 
 await ExibirOpcoesMenu();

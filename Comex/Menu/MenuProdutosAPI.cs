@@ -1,6 +1,9 @@
-﻿using System.Globalization;
+﻿using Comex.Model;
+using Comex.Order;
+using System.Globalization;
+using System.Net.Http;
 using System.Text.Json;
-
+using System.Threading.Tasks;
 namespace Comex.Menu;
 
 internal class MenuProdutosAPI
@@ -20,53 +23,32 @@ internal class MenuProdutosAPI
                     Console.WriteLine("Escolha a opção de ordenação:");
                     Console.WriteLine("1 - Ordenar por Nome\n2 - Ordenar por Preço");
                     Console.Write("Opção: ");
-                    string opcao = Console.ReadLine();
-
+                    string opcao = Console.ReadLine()!;
                     IEnumerable<Produto> produtosOrdenados;
                     switch (opcao)
                     {
                         case "1":
-                            produtosOrdenados = OrdenarPorNome(produtosAPI);
+                            var ordenarPorNome = new OrdenarProdutos();
+                            ordenarPorNome.OrdenarPorNome(produtosAPI);
                             break;
                         case "2":
-                            produtosOrdenados = OrdenarPorPreco(produtosAPI);
+                            var ordenarPorPreco = new OrdenarProdutos();
+                            ordenarPorPreco.OrdenarPorPreco(produtosAPI);
                             break;
                         default:
                             produtosOrdenados = produtosAPI;
                             break;
-                    }
-
-                    foreach (Produto produto in produtosOrdenados)
-                    {
-                        Console.WriteLine($"Produto: {produto.Nome}");
-                        Console.WriteLine($"Descrição: {produto.Descricao}");
-                        Console.WriteLine($"Preço: {produto.PrecoUnitario.ToString("C", CultureInfo.CurrentCulture)}");
-                        Console.WriteLine();
                     }
                 }
                 else
                 {
                     Console.WriteLine("Nenhum produto registrado.");
                 }
-
-                Console.WriteLine("\nAperte enter para voltar ao menu");
-                Console.ReadLine();
-                Console.Clear();
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Erro ao consultar API: {ex.Message}");
             }
         }
-    }
-
-    private IEnumerable<Produto> OrdenarPorNome(IEnumerable<Produto> produtos)
-    {
-        return produtos.OrderBy(p => p.Nome).ToList();
-    }
-
-    private IEnumerable<Produto> OrdenarPorPreco(IEnumerable<Produto> produtos)
-    {
-        return produtos.OrderBy(p => p.PrecoUnitario).ToList();
     }
 }

@@ -14,11 +14,11 @@ internal class Produto
         Quantidade = quantidade;
     }
     [JsonPropertyName("title")]
-    public string Nome { get; }
+    public string Nome { get; set; }
     [JsonPropertyName("description")]
-    public string Descricao { get; }
+    public string Descricao { get; set; }
     [JsonPropertyName("price")]
-    public float PrecoUnitario { get; }
-    public int Quantidade { get; }
+    public float PrecoUnitario { get; set; }
+    public int Quantidade { get; set; }
 
 }
