@@ -1,61 +1,50 @@
 ﻿using Comex.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Comex.Menu;
 
 internal class MenuCriarPedido
 {
-    public void Executar(List<Produto> produtos, List<ItemPedido> itemPedidos, List<Pedido> pedidos)
+    public void Executar(List<Produto> produtos, List<Pedido> pedidos)
     {
+        List<ItemPedido> itensPedido = new List<ItemPedido>();
         Console.Clear();
         Console.WriteLine("----Criar Pedido----\n");
 
+        // Exibir a lista de produtos
         for (int i = 0; i < produtos.Count; i++)
         {
             Console.WriteLine($"\n{i + 1} - Produto: {produtos[i].Nome} - Preço: {produtos[i].PrecoUnitario:C}");
         }
 
-        List<ItemPedido> itensPedido = new List<ItemPedido>();
-
         int opcao;
         do
         {
-            Console.Write("Digite o número do produto para adicionar ao pedido (0 para finalizar): ");
+            Console.WriteLine("\n1 - Inserir produto\n0 - Finalizar");
+            Console.Write("Digite a opção: ");
             opcao = int.Parse(Console.ReadLine()!);
 
-            if (opcao != 0 && opcao > 0 && opcao <= produtos.Count)
+            switch (opcao)
             {
-                var produtoEscolhido = produtos[opcao - 1];
+                case 1:
+                    MenuItemPedido menuItem = new MenuItemPedido();
+                    menuItem.Executar(produtos, itensPedido);
+                    break;
+                case 0:
+                    Console.Write("Nome do Cliente: ");
+                    string nomeCliente = Console.ReadLine()!;
+                    Cliente cliente = new Cliente(nomeCliente);
 
-                Console.Write("Digite a quantidade que deseja: ");
-                int quantidade = int.Parse(Console.ReadLine()!);
+                    Pedido pedido = new Pedido(cliente, DateTime.Now, itensPedido);
+                    pedidos.Add(pedido);
 
-                var precoUnitario = produtoEscolhido.PrecoUnitario;
-
-                ItemPedido item = new ItemPedido(produtoEscolhido, quantidade, precoUnitario);
-                itensPedido.Add(item);
-
-                Console.WriteLine($"Produto {produtoEscolhido.Nome} adicionado ao pedido!\n");
-            }
-            else if (opcao != 0)
-            {
-                Console.WriteLine("Número do produto inválido. Tente novamente.");
+                    Console.WriteLine("Pedido criado com sucesso!");
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
             }
 
         } while (opcao != 0);
-        Console.Write("Nome do Cliente: ");
-        string nomeCliente = Console.ReadLine()!;
-        Cliente cliente = new Cliente(nomeCliente);
 
-        Pedido pedido = new Pedido(cliente, DateTime.Now, itensPedido);
-
-        pedidos.Add(pedido);
-
-        Console.WriteLine("Pedido criado com sucesso!");
         Console.WriteLine("Aperte enter para voltar ao menu principal");
         Console.ReadKey();
         Console.Clear();

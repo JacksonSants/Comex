@@ -8,10 +8,6 @@ List<Produto> produtos = new List<Produto> {
     new Produto("Nootbook DEL", "Nootbook DEL Expire Ae500", 1760.00f, 15),
     new Produto("Iphone", "Nootbook DEL Expire Ae500", 1760.00f, 15)
 };
-//Instância de produto
-Produto produto = new Produto("Superman", "Geek Superma", 120.00f, 20);
-//Instância item pedido
-List<ItemPedido> itemPedido = new List<ItemPedido>();
 //Intância endereço
 Endereco endereco = new Endereco();
 endereco.Bairro = "São Jorge";
@@ -27,7 +23,7 @@ List<Pedido> pedidos = new List<Pedido>();
 async Task ExibirOpcoesMenu()
 {
     Menu.ExibirLogo();
-    Console.WriteLine("\n1 - Criar produto\n2 - Listar produto\n3 - Consultar API de produtos\n4 - Criar pedido\n0 - Sair");
+    Console.WriteLine("\n1 - Criar produto\n2 - Listar produto\n3 - Consultar API de produtos\n4 - Criar pedido\n5 - Listar pedidos\n0 - Sair");
     Console.Write("Opção: ");
     string opcao = Console.ReadLine()!;
     int opcaoEscolhida = int.Parse(opcao);
@@ -55,7 +51,13 @@ async Task ExibirOpcoesMenu()
         case 4:
             //Create demand
             MenuCriarPedido menu4 = new MenuCriarPedido();
-            menu4.Executar(produtos, itemPedido, pedidos);
+            menu4.Executar(produtos, pedidos);
+            await ExibirOpcoesMenu();
+            break;
+        case 5:
+            //Create demand
+            MenuListarPedido menu5 = new MenuListarPedido();
+            menu5.Executar(pedidos);
             await ExibirOpcoesMenu();
             break;
         case 0:
