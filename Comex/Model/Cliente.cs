@@ -9,14 +9,9 @@ internal class Cliente : IIdentificar
     public string Telefone { get; set; }
     public Endereco Endereco { get; set; }
 
-    public Cliente(string nome, string cpf, string email, string prodissao, string telefone, Endereco endereco)
+    public Cliente(string nome)
     {
         Nome = nome;
-        Cpf = cpf;
-        Email = email;
-        Profissao = prodissao;
-        Telefone = telefone;
-        Endereco = endereco;
     }
     public string Identificar()
     {

@@ -2,17 +2,32 @@
 using Comex.Menu;
 using Comex.Model;
 using Comex.Order;
-
+//Lista de produtos
 List<Produto> produtos = new List<Produto> {
     new Produto("Nootbook Acer", "Nootbook Acer Expire E5000", 1570.00f, 20),
     new Produto("Nootbook DEL", "Nootbook DEL Expire Ae500", 1760.00f, 15),
     new Produto("Iphone", "Nootbook DEL Expire Ae500", 1760.00f, 15)
 };
+//Instância de produto
+Produto produto = new Produto("Superman", "Geek Superma", 120.00f, 20);
+//Instância item pedido
+List<ItemPedido> itemPedido = new List<ItemPedido>();
+//Intância endereço
+Endereco endereco = new Endereco();
+endereco.Bairro = "São Jorge";
+endereco.Numero = 1200;
+endereco.Rua = "Bairro DEV";
+endereco.Complemento = "Apt-12";
+endereco.Cidade = "Nova York";
+//Instância cliente
+Cliente cliente = new Cliente("Diego");
+//Lista de Itens de pedido
+List<Pedido> pedidos = new List<Pedido>();
 
 async Task ExibirOpcoesMenu()
 {
     Menu.ExibirLogo();
-    Console.WriteLine("\n1 - Criar produto\n2 - Listar produto\n3 - Consultar API de produtos\n0 - Sair");
+    Console.WriteLine("\n1 - Criar produto\n2 - Listar produto\n3 - Consultar API de produtos\n4 - Criar pedido\n0 - Sair");
     Console.Write("Opção: ");
     string opcao = Console.ReadLine()!;
     int opcaoEscolhida = int.Parse(opcao);
@@ -32,9 +47,15 @@ async Task ExibirOpcoesMenu()
             await ExibirOpcoesMenu();
             break;
         case 3:
-            // Consultar API de produtos
+            // Consult API de products
             MenuProdutosAPI menu3 = new MenuProdutosAPI();
             await menu3.Executar(produtos);
+            await ExibirOpcoesMenu();
+            break;
+        case 4:
+            //Create demand
+            MenuCriarPedido menu4 = new MenuCriarPedido();
+            menu4.Executar(produtos, itemPedido, pedidos);
             await ExibirOpcoesMenu();
             break;
         case 0:

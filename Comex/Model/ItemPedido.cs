@@ -2,16 +2,16 @@
 
 internal class ItemPedido
 {
-    Produto  Produto { get; set; }
-    public int Quantidade { get; set; }
-    public decimal PrecoUnitario { get; set; }
-    public decimal SubTotal { get; set; }
+    Produto  Produto { get; }
+    public int Quantidade { get; }
+    public double PrecoUnitario { get; }
+    public double SubTotal { get; }
 
-    public ItemPedido(Produto produto, int quantidade, decimal precoUnitario, decimal subtotal)
+    public ItemPedido(Produto produto, int quantidade, double precoUnitario)
     {
         Produto = produto;
         Quantidade = quantidade;
         PrecoUnitario = precoUnitario;
-        SubTotal = subtotal;
+        SubTotal = quantidade * PrecoUnitario;
     }
 }

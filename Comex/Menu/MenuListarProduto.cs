@@ -1,5 +1,6 @@
 ﻿using Comex.Model;
 using Comex.Order;
+using System;
 using System.Globalization;
 
 namespace Comex.Menu;
@@ -16,17 +17,17 @@ internal class MenuListarProduto
             Console.WriteLine("Escolha a opção de ordenação:");
             Console.WriteLine("1 - Ordenar por Nome\n2 - Ordenar por Preço");
             Console.Write("Opção: ");
-            string opcao = Console.ReadLine()!;
+            int opcao = int.Parse(Console.ReadLine()!);
 
             switch (opcao)
             {
-                case "1":
-                    var ordenarPorNome = new OrdenarProdutos();
-                    ordenarPorNome.OrdenarPorNome(produtos);
+                case 1:
+                    var menu1 = new OrdenarProdutos();
+                    menu1.OrdenarPorNome(produtos);
                     break;
-                case "2":
-                    var ordenarPorPreco = new OrdenarProdutos();
-                    ordenarPorPreco.OrdenarPorPreco(produtos);
+                case 2:
+                    var menu2 = new OrdenarProdutos();
+                    menu2.OrdenarPorPreco(produtos);
                 break;
                 default:
                     Console.WriteLine("Opção inválida. Exibindo produtos sem ordenação.");
