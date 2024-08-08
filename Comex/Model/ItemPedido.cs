@@ -2,7 +2,7 @@
 
 internal class ItemPedido
 {
-    Produto  Produto { get; }
+    public Produto  Produto { get; }
     public int Quantidade { get; }
     public double PrecoUnitario { get; }
     public double SubTotal { get; }
