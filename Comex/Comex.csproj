@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="solucao.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="solucao.sql" />
+  </ItemGroup>
+
 </Project>
