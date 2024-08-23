@@ -53,7 +53,7 @@ INSERT INTO pedido(data_pedido, valor_total, cliente_id) VALUES ('2024-08-18', 9
 
 INSERT INTO pedido(data_pedido, valor_total, cliente_id) VALUES ('2024-08-21', 185.90, 2)
 /*
-teste inválido para id que não existe nna tabela clientes
+teste inválido para id que não existe na tabela clientes
 INSERT INTO pedido(data_pedido, valor_total, cliente_id) VALUES ('2024-08-21', 185.90, 7)
 */
 
@@ -76,7 +76,7 @@ SELECT * FROM clientes
 SELECT * FROM pedido
 	WHERE valor_total > 100.00
 
-/*Filtrar pedido por preço maior que 100,00*/
+/*Filtrar pedido por nome*/
 SELECT * FROM clientes
 	ORDER BY nome ASC
 
