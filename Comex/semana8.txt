@@ -36,8 +36,30 @@
 	No BitTorrent, o arquivo é dividido em pequenas partes que são distribuídas entre todos os usuários que estão baixando ou já baixaram partes desse arquivo.
 	Enquanto o HTTP é ideal para entregar conteúdos centralizados, como páginas da web e arquivos de servidores específicos, o BitTorrent (P2P) é mais eficiente
 	para distribuir arquivos grandes entre muitos usuários sem sobrecarregar um único servidor
-	
 
+
+Aprendendo sobre URLs
+
+1 - O que é uma URL e como ela é estruturada?
+	A URL é como um endereço na internet. Ela indica exatamente onde um recurso, como uma página web está localizado. Ela é estruturada 
+	Protocolo: O protocolo define como a informação será transmitida.
+	Nome de domínio ou endereço IP: É o endereço do servidor onde o recurso está hospedado.
+	Número da porta (opcional): Indica a porta específica do servidor que está sendo acessada.
+	Caminho: Indica a localização do recurso dentro do servidor.
+	Nome do arquivo (opcional): Especifica o nome do arquivo que você deseja acessar.
+
+2 - Qual é a diferença entre uma URI e uma URL?
+	URI é como um "nome" que identifica algo na web, como uma página, um arquivo, um serviço ou até mesmo um objeto dentro de uma página.
+	URL é um tipo específico de URI que indica a localização exata de um recurso na internet. É como um endereço completo que te leva até o recurso.
+
+3 - Qual é a porta padrão usada pelo HTTP e pelo HTTPS? E quais portas estão disponíveis para uso livre?
+	A porta utilizada pelo HTTP é a porta 80 e do HTTPS 443 e as livres para uso são as portas acima de 1000.
+
+4 - Como um endereço IP se transforma em um nome de domínio? Descreva o processo e o papel do DNS.
+	O DNS é o responsável por essa "tradução". Ele traduz e armazena a relação entre os nomes de domínio e os endereços IP.
+
+5 - Por que é importante escolher nomes de URLs que sejam fáceis de entender para qualquer pessoa?
+	Escolher nomes de URLs facéis torna o site  mais facéis de serem buscados, melhora a usabilidade e experiência do usuário.
 
 Controlando o HTTP
 
