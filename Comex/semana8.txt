@@ -61,6 +61,39 @@ Aprendendo sobre URLs
 5 - Por que é importante escolher nomes de URLs que sejam fáceis de entender para qualquer pessoa?
 	Escolher nomes de URLs facéis torna o site  mais facéis de serem buscados, melhora a usabilidade e experiência do usuário.
 
+
+
+Inspecionando o protocolo HTTP
+
+1 - Qual é o formato das mensagens HTTP e quais são suas principais partes?
+	Elas são divididas em duas partes principais:
+	Header: Contem informações importantes para o envio da mensagem como, métodos HTTP,URL, versão do HTTP e outras informaçõe.
+	Body: É o conteúdo ou informações enviados, contêm os dados que o cliente envia para o servidor ou que o servidor envia para o cliente. 
+
+2 - Quais são os principais métodos HTTP e para que cada um deles é utilizado?
+	GET
+	POST
+	PUT
+	DELETE
+3 - O que significa dizer que um servidor HTTP é "stateless"?
+	Servidor HTTP sem estado
+4 - O que são Sessões e Cookies, e como eles ajudam a "lembrar" o servidor?
+	sessão: um espaço reservado no servidor para guardar informações sobre sua atividade no site.
+	cookie: um pequeno arquivo que o servidor envia para o seu navegador e que o navegador armazena no seu computador.
+5 - Quais são os significados dos seguintes códigos de status HTTP: 200, 201, 401, 404, 403 e familia 500
+
+
+
+Protegendo a Web com HTTPS
+
+1 - O que é HTTPS e como ele difere do HTTP?
+2 - Qual é o papel do TLS no funcionamento do HTTPS?
+3 - Como funciona a criptografia assimétrica em transações cliente-servidor usando HTTPS?
+4 - O que é criptografia simétrica e como ela se diferencia da criptografia assimétrica?
+5 - Por que a criptografia simétrica é considerada mais rápida que a assimétrica?
+
+
+
 Controlando o HTTP
 
 1 - Qual é a diferença principal entre os métodos GET e POST em termos de como os parâmetros são enviados?
