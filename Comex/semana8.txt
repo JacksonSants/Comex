@@ -1,0 +1,70 @@
+﻿Conhecendo o protocolo HTTP
+
+
+1 - O que é HTTP e qual o seu papel na comunicação web?
+	O HTTP, que significa Hypertext Transfer Protocol, ele é responsável pela comunicação entre o cliente e o servidor da internet, transportando dados entre eles.
+	entre esses dois pontos.
+
+2 - Explique a arquitetura do HTTP e os papéis do cliente (navegador) e do servidor (backend).
+	A arquitetura do HTTP é baseado no arquitetura Cliente-Servidor.
+	O cliente, no caso da web, é o seu navegador, como o Chrome, Firefox ou Safari. 
+	O servidor, por sua vez, é um computador que armazena os dados do site, como as páginas web, imagens e outros arquivos.
+	O HTTP é um protocolo stateless, ou seja, ele não guarda informações sobre as interações anteriores entre o cliente e o servidor. Cada requisição é tratada de forma independente, ]
+	sem levar em consideração as requisições anteriores. Dedsta forma o HTPP define as regras e os padrões para essa comunicação, garantindo que o cliente e o servidor se entendam e que a informação seja transmitida de forma eficiente e segura.
+
+3 - Quais são as camadas da arquitetura da internet e como o HTTP se relaciona com a camada de aplicação?
+	O HTTP, como um protocolo de aplicação, reside na Camada de Aplicação. Ele é responsável por definir as regras e os padrões para a comunicação entre o cliente e o servidor,
+	garantindo que as informações sejam transmitidas de forma eficiente e segura.
+
+	Camada de Aplicação: O HTTP se relaciona a essa camada para enviar os dados.  Ele define as regras e padrões para a comunicação entre cliente e servidor, 
+	permitindo que as informações sejam transmitidas de forma eficiente e segura.
+	Camada de Transporte: Nesta camada, o TCP é o principal protocolo usado pelo HTTP. O TCP é responsável por estabelecer uma
+	conexão entre o cliente e o servidor, garantindo que os dados sejam transmitidos de maneira confiável e na ordem correta.
+	Camada de Rede: IP (Internet Protocol) opera nesta camada. Ele é responsável por endereçar e encaminhar os pacotes de dados pela rede, assegurando que eles cheguem ao destino correto.
+	Camada de Enlace: rspons[avel pelo controle de acesso ao meio de transmissão e da detecção de erros básicos na transmissão dos dados.
+	Camada Física: Esta camada lida com a transmissão física como cabos de cobre, fibra óptica, ou sinais de rádio.
+
+4 - O que é um protocolo na comunicação entre dispositivos? Como o HTTP define as regras dessa "conversa"?
+	Um protocolo é como um manual para a comunicação entre dispositivos. Ele define as regras e formatos que devem ser seguidos para que a conversa seja 
+	compreendida por todos os envolvidos. Desta forma o HTTP define essas formas de como se comunicar.
+	O que deve ser enviado: O tipo de informação, como texto, imagens, vídeos, etc.
+	Como deve ser enviado: O formato da mensagem, como o código HTML, JSON, etc.
+	Como a resposta deve ser interpretada: O que significa cada código de status, como 200 (OK) ou 404 (Página não encontrada).
+
+5 - Cite e explique um protocolo alternativo ao HTTP, como o P2P. Quais são as principais diferenças entre ele e o HTTP?
+	O BitTorrent é um protocolo de compartilhamento de arquivos que permite a distribuição de grandes quantidades de dados pela internet de forma eficiente.
+	No BitTorrent, o arquivo é dividido em pequenas partes que são distribuídas entre todos os usuários que estão baixando ou já baixaram partes desse arquivo.
+	Enquanto o HTTP é ideal para entregar conteúdos centralizados, como páginas da web e arquivos de servidores específicos, o BitTorrent (P2P) é mais eficiente
+	para distribuir arquivos grandes entre muitos usuários sem sobrecarregar um único servidor
+	
+
+
+Controlando o HTTP
+
+1 - Qual é a diferença principal entre os métodos GET e POST em termos de como os parâmetros são enviados?
+	O método POST no HTTP é utilizados para realizar inserção de informações em uma api, registrar informações.
+	O método GET no HTTP é utilizado para buscar nformações na api, é utilizar apenas para visualizar os dados.
+
+2 - O que são Query Parameters e como eles são usados em uma requisição GET?
+	Query Parameters são parâmentros utilizados na url para filtar dos dados de uma aplicação. Ele são utilizados logo após o path, ex:
+	http://PATH?paramentro=valor
+	como podemos ver acima o PATH vem seguido do query parameters utilizando a '?' passando o parâmentro sseguido do '=' e o valor que será buscado para buscar/filtrar os dados.
+
+3 - Como os dados são transmitidos no corpo de uma requisição POST?
+
+4 - Quais são as limitações do uso de parâmetros com o método GET?
+5 - Em que situações é preferível usar POST em vez de GET para enviar dados ao servidor?
+
+
+Conhecendo as evoluções do HTTP
+
+1- Quais são as principais melhorias introduzidas pelo HTTP/2 em relação ao HTTP/1.x?
+Multiplexação - Ele utilizar toda sas request que ocorrem paralelamente e utiliza em apenas uma conexão tcp, melhorando a performance da aplicação.
+Compactação de cabeçaçho - O cabeçalho que antes era em formato de texto passar a ser em formato binário.
+Server push - Enviar dados antes de um usuário pedir.
+
+2 - Como a multiplexação de streams no HTTP/2 melhora a eficiência da comunicação em comparação ao HTTP/1.x?
+3 - Qual é o papel da compressão de cabeçalhos no HTTP/2 e como isso beneficia a performance das requisições?
+4 - Comente sobre o HTTP3 e quais evoluções ele traz.
+O HTTP3 utiliza uma variação do UPD, chamada QUIC.
+Inserção do TLS no QUIC, permitindo criar conexões HTTPS seguras.
